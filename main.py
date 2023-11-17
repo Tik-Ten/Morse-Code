@@ -5,5 +5,5 @@ Data = Morse_code(text)
 if direction == "enc": 
     print(Data.Encode()) 
 elif direction == "dec": 
-    answer = Data.Decode()
+    print(Data.Decode())
 else: print("Your answer is not correct!")
