@@ -1,4 +1,26 @@
 Morse_Letters = {
+    "`" : "`",
+    "!" : "!",
+    "@" : "@",
+    "#" : "#",
+    "$" : "$",
+    "%" : "%",
+    "^" : "^",
+    "&" : "&",
+    "*" : "*",
+    "(" : "(",
+    ")" : ")",
+    "-" : "-",
+    "_" : "_",
+    "+" : "+",
+    "=" : "=",
+    "/" : "/",
+    "?" : "?",
+    "~" : "~",
+    "." : ".",
+    "<" : "",
+    ">" : "",
+    " " : " ",
     "a" : "._", 
     "b" : "_...", 
     "c" : "_._.", 
@@ -31,8 +53,13 @@ class Morse_code():
     def __init__(self, Text):
         self.text = Text
     def Encode(self): 
+        text = ""
         for i in range(len(self.text)):
-            return Morse_Letters
+            try:
+                text += Morse_Letters[self.text[i]]
+            except:
+                text += " <Invalid letter> "
+        return text
     def Decode(self): 
         for i in range(len(self.text)):
             pass
