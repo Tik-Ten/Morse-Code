@@ -20,7 +20,7 @@ Morse_Letters = {
     "." : ".",
     "<" : "",
     ">" : "",
-    " " : " ",
+    " " : "<space>",
     "a" : ".-", 
     "b" : "-...", 
     "c" : "-.-.", 
@@ -48,8 +48,52 @@ Morse_Letters = {
     "y" : "-.--", 
     "z" : "--.."
 }
-Morse_Letters_rev = {value: key for key, value in Morse_Letters.items()}
-Letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+Morse_Letters_rev = {
+    '`': '`', 
+    '!': '!', 
+    '@': '@', 
+    '#': '#', 
+    '$': '$', 
+    '%': '%', 
+    '^': '^', 
+    '&': '&', 
+    '*': '*', 
+    '(': '(', 
+    ')': ')', 
+    '-': 't', 
+    '_': '_', 
+    '+': '+', 
+    '=': '=', 
+    '/': '/', 
+    '?': '?', 
+    '~': '~', 
+    '.': 'e', 
+    '>': '>', 
+    '<space>': '<space>', 
+    '.-': 'a', 
+    '-...': 'b', 
+    '-.-.': 'c', 
+    '-..': 'd', 
+    '..-.': 'f', 
+    '--.': 'g', 
+    '....': 'h', 
+    '..': 'i', 
+    '.---': 'j', 
+    '-.-': 'k', 
+    '.-..': 'l', 
+    '--': 'm', 
+    '-.': 'n', 
+    '---': 'o', 
+    '.--.': 'p', 
+    '--.-': 'q', 
+    '.-.': 'r', 
+    '...': 's', 
+    '..-': 'u', 
+    '...-': 'v', 
+    '.--': 'w', 
+    '-..-': 'x', 
+    '-.--': 'y', 
+    '--..': 'z'}
 class Morse_code():
     def __init__(self, Text):
         self.text = Text
@@ -57,10 +101,17 @@ class Morse_code():
         text = ""
         for i in range(len(self.text)):
             try:
-                text += Morse_Letters[self.text[i]]
+                text += Morse_Letters[self.text[i]] + " "
             except:
-                text += " <Invalid letter> "
+                text += "<Invalid-letter>"
         return text
     def Decode(self): 
+        text = ""
+        self.text = self.text.split(" ")
         for i in range(len(self.text)):
-            pass
+            try:
+                text += Morse_Letters_rev[self.text[i]] + " "
+            except:
+                text += " <Invalid-Letter> "
+        text = text.replace(" ", "")
+        return text
