@@ -1,2 +1,2 @@
 # Morse-Code
-I wan't create an application for decode and <b> encode </b> Morse Code
+I wan't create an application for decoding and encoding Morse Code
